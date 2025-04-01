@@ -2,6 +2,7 @@
 *.lock
 *.pyc
 .venv
+venv/
 node_modules/
 coverage/
 static/bundle.js
