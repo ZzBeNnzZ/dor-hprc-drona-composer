@@ -10,10 +10,16 @@ import EnvironmentModal from "./EnvironmentModal";
 import PreviewModal from "./PreviewModal";
 
 
+const noop = () => { };
+
 function JobComposer({ error, setError, formRef,
   previewRef,
   envModalRef,
-  multiPaneRef, ...props }) {
+  multiPaneRef,
+  TutorialField,
+  handleAddEnv = noop,
+  handleEnvChange = noop,
+  environment = [], ...props }) {
   const [showHistory, setShowHistory] = useState(true);
 
   return (
@@ -65,31 +71,32 @@ function JobComposer({ error, setError, formRef,
               <div className="invisible">
                 <button className="btn btn-primary" style={{ visibility: 'hidden' }}>Balance</button>
               </div>
+
               {props.environment.env !== "" && (
                 <div>
                   <input type="button" id="job-preview-button" className="btn btn-primary maroon-button" value="Preview" onClick={props.handlePreview} />
                 </div>
               )}
-              <div>
+              {/* <div>
                 <button className="btn btn-primary maroon-button" onClick={(e) => {
                   e.preventDefault();
                   setShowHistory(!showHistory);
                 }}>
                   {showHistory ? 'Hide History' : 'Show History'}
                 </button>
-              </div>
+              </div> */}
             </div>
           </form>
-          <SubmissionHistory isExpanded={showHistory} handleRerun={props.handleRerun} handleForm={props.handleForm} />
+          {/* <SubmissionHistory isExpanded={showHistory} handleRerun={props.handleRerun} handleForm={props.handleForm} /> */}
         </div>
-        <div className="card-footer">
+        {/* <div className="card-footer">
           <small className="text-muted">
             ⚠️ Cautions: Job files will overwrite existing files with the same name. The same principle applies for your executable scripts.
           </small>
-        </div>
+        </div> */}
       </div>
-
-      <EnvironmentModal envModalRef={envModalRef} />
+      {/*       
+      <EnvironmentModal envModalRef={envModalRef} /> */}
       <PreviewModal
         previewRef={previewRef}
         warningMessages={props.warningMessages}

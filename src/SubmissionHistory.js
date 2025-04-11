@@ -14,23 +14,23 @@ const SubmissionHistory = ({ isExpanded, handleRerun, handleForm }) => {
       const defaultEndDate = currentDate.toISOString().split('T')[0];
       currentDate.setDate(currentDate.getDate() - 30);
       const defaultStartDate = currentDate.toISOString().split('T')[0];
-      
+
       setStartDate(defaultStartDate);
       setEndDate(defaultEndDate);
-      
-      fetchJobHistory();
+
+      // fetchJobHistory();
     }
   }, [isExpanded]);
 
-  const fetchJobHistory = async () => {
-    try {
-      const response = await fetch(`${document.dashboard_url}/jobs/composer/history`);
-      const data = await response.json();
-      setJobHistory(data);
-    } catch (error) {
-      console.error('Failed to fetch job history:', error);
-    }
-  };
+  // const fetchJobHistory = async () => {
+  //   try {
+  //     const response = await fetch(`${document.dashboard_url}/jobs/composer/history`);
+  //     const data = await response.json();
+  //     setJobHistory(data);
+  //   } catch (error) {
+  //     console.error('Failed to fetch job history:', error);
+  //   }
+  // };
 
 
   useEffect(() => {
@@ -75,9 +75,9 @@ const SubmissionHistory = ({ isExpanded, handleRerun, handleForm }) => {
         const displayedName = diskName.length > 3 ? diskName.slice(-3).join('/') : location;
         return (
           <div className="text-truncate" style={{ maxWidth: '280px' }}>
-            <a 
-              target="_blank" 
-              style={{ color: '#003C71', fontWeight: 'bold', textDecoration: 'underline' }} 
+            <a
+              target="_blank"
+              style={{ color: '#003C71', fontWeight: 'bold', textDecoration: 'underline' }}
               href={document.file_app_url + row.location}
               title={location}
             >
@@ -161,7 +161,7 @@ const SubmissionHistory = ({ isExpanded, handleRerun, handleForm }) => {
                   <button
                     className="dropdown-item"
                     onClick={() => {
-		      window.scrollTo(0, 90);
+                      window.scrollTo(0, 90);
                       handleForm(row);
                       setOpenDropdownId(null);
                     }}
@@ -175,7 +175,7 @@ const SubmissionHistory = ({ isExpanded, handleRerun, handleForm }) => {
         );
       },
       ignoreRowClick: true,
-  }
+    }
   ];
 
 
@@ -183,13 +183,13 @@ const SubmissionHistory = ({ isExpanded, handleRerun, handleForm }) => {
     const filtered = jobHistory.filter(job => {
       if (!job.timestamp || !startDate || !endDate) return true;
       const jobDate = new Date(job.timestamp);
-      
+
       const startDateObj = new Date(startDate);
       startDateObj.setHours(23, 59, 59, 999);
-	    
-      const endDateObj = new Date(endDate );
+
+      const endDateObj = new Date(endDate);
       endDateObj.setDate(endDateObj.getDate() + 1);
-      endDateObj.setHours(23, 59, 59, 999);  
+      endDateObj.setHours(23, 59, 59, 999);
       return jobDate >= startDateObj && jobDate <= endDateObj;
     });
     const sortedFiltered = [...filtered].sort((a, b) => {
@@ -225,11 +225,11 @@ const SubmissionHistory = ({ isExpanded, handleRerun, handleForm }) => {
           onChange={(e) => setEndDate(e.target.value)}
           className="mx-2"
         />
-        <button 
+        <button
           className="btn btn-primary maroon-button"
           onClick={handleFilter}
         >
-         Filter 
+          Filter
         </button>
       </div>
 
@@ -237,20 +237,20 @@ const SubmissionHistory = ({ isExpanded, handleRerun, handleForm }) => {
         columns={columns}
         data={filteredData}
         customStyles={tableCustomStyles}
-	responsive
-	pagination
+        responsive
+        pagination
         noDataComponent="No jobs have been submitted yet."
-	    sortIcon={
-    <svg
-      width="12"
-      height="12"
-      viewBox="0 0 12 12"
-      fill="currentColor"
-      style={{ marginLeft: '4px' }}
-    >
-      <path d="M6 9L2 5h8L6 9z"/>
-    </svg>
-  }
+        sortIcon={
+          <svg
+            width="12"
+            height="12"
+            viewBox="0 0 12 12"
+            fill="currentColor"
+            style={{ marginLeft: '4px' }}
+          >
+            <path d="M6 9L2 5h8L6 9z" />
+          </svg>
+        }
       />
     </div>
   );

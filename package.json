@@ -5,6 +5,7 @@
   "main": "webpack.config.js",
   "dependencies": {
     "bootstrap": "^5.3.3",
+    "dompurify": "^3.2.5",
     "react": "^18.2.0",
     "react-data-table-component": "^7.6.2",
     "react-dom": "^18.2.0",
