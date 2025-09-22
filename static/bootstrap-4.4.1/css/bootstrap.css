@@ -282,6 +282,7 @@ input[type="radio"],
 input[type="checkbox"] {
   box-sizing: border-box;
   padding: 0;
+  width: 20px !important;
 }
 
 input[type="date"],

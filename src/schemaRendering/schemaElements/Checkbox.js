@@ -42,13 +42,15 @@ function Checkbox(props) {
 
   return (
     <FormElementWrapper
-      labelOnTop={props.labelOnTop}
+      labelOnTop={false}
       name={props.name}
       label={props.label}
       help={props.help}
     >
         <input
           type="checkbox"
+          style = {{width: "20px", marginTop: "auto"
+          }}
           name={props.name}
           id={props.id}
           value={checkboxValue}

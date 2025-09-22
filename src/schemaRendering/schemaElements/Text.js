@@ -41,6 +41,7 @@ function Text(props) {
       name={props.name}
       label={props.label}
       help={props.help}
+      useLabel={props.useLabel}
     >
       <input
         type="text"

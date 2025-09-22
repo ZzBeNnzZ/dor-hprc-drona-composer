@@ -330,10 +330,10 @@ export function App() {
           messages={messages}
           panes={panes}
           setPanes={setPanes}
-	  jobStatus={jobStatus}
-	  globalFiles={globalFiles}
+          jobStatus={jobStatus}
+          globalFiles={globalFiles}
           handlePreview={handlePreview}
-	  rerunInfo={rerunInfo}
+          rerunInfo={rerunInfo}
           handleEnvChange={handleEnvChange}
           handleAddEnv={handleAddEnv}
           handleUploadedFiles={handleUploadedFiles}

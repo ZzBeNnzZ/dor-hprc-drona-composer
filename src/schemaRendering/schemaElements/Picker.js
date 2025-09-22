@@ -77,7 +77,7 @@ function Picker(props) {
       }
     }
   }, [uploadedFiles]);
-  
+
   useEffect(() => {
     let url = document.dashboard_url + "/jobs/composer/mainpaths";
     const searchParams = new URLSearchParams();
@@ -105,8 +105,8 @@ function Picker(props) {
     setCurrentPath(fullPath);
     fetch(
       document.dashboard_url +
-        "/jobs/composer/subdirectories?path=" +
-        encodeURIComponent(fullPath),
+      "/jobs/composer/subdirectories?path=" +
+      encodeURIComponent(fullPath),
       {
         method: "GET",
         headers: {
@@ -134,8 +134,8 @@ function Picker(props) {
     setCurrentPath(fullPath);
     fetch(
       document.dashboard_url +
-        "/jobs/composer/subdirectories?path=" +
-        encodeURIComponent(fullPath),
+      "/jobs/composer/subdirectories?path=" +
+      encodeURIComponent(fullPath),
       {
         method: "GET",
         headers: {
@@ -170,8 +170,8 @@ function Picker(props) {
     setCurrentPath(newPath);
     fetch(
       document.dashboard_url +
-        "/jobs/composer/subdirectories?path=" +
-        encodeURIComponent(newPath),
+      "/jobs/composer/subdirectories?path=" +
+      encodeURIComponent(newPath),
       {
         method: "GET",
         headers: {
@@ -243,59 +243,60 @@ function Picker(props) {
 
     remoteInput.current.click();
   }
-    
-  
+
+
   // Returns false if showFiles is undefined, returns true if showFiles is boolean and true or is a string its toLowerCase is "true"
   const isShowFiles = Boolean(props.showFiles) && props.showFiles.toString().toLowerCase() === "true";
   const showRemoteLabel = props.remoteLabel ? true : false;
 
   return (
     <div>
-      <FormElementWrapper
+      {/* <FormElementWrapper
         labelOnTop={props.labelOnTop}
         name={props.name}
         label={props.label}
         help={props.help}
-      >
-        <div style={{ display: "flex", gap: "0.5rem" }}>
-          {showRemoteLabel && (
-            <button
-              type="button"
-              className="btn btn-primary maroon-button"
-              style={{ marginRight: "2px" }}
-              onClick={handleRemoteClick}
-            >
-              {props.remoteLabel}
-            </button>
-          )}
-          <input
-            type="file"
-            style={{ display: "none" }}
-            multiple
-            ref={remoteInput}
-            onChange={(e) => handleFileChange(e.target.files)}
-          />
+      > */}
+
+      <div style={{ display: "flex", gap: "0.5rem" }}>
+        {showRemoteLabel && (
           <button
             type="button"
             className="btn btn-primary maroon-button"
-            data-toggle="modal"
-            data-target={"#local-file-picker-modal-" + props.name}
             style={{ marginRight: "2px" }}
+            onClick={handleRemoteClick}
           >
-            {props.localLabel}
+            {props.remoteLabel}
           </button>
-          <input
-            type="text"
-            name={props.name}
-            id={props.id}
-            // value={value}
-            value={value}
-            className="form-control"
-            onChange={handleValueChange}
-            ref={inputRef}
-          />
-        </div>
-      </FormElementWrapper> 
+        )}
+        <input
+          type="file"
+          style={{ display: "none" }}
+          multiple
+          ref={remoteInput}
+          onChange={(e) => handleFileChange(e.target.files)}
+        />
+        <button
+          type="button"
+          className="btn btn-primary maroon-button"
+          data-toggle="modal"
+          data-target={"#local-file-picker-modal-" + props.name}
+          style={{ marginRight: "2px" }}
+        >
+          {props.localLabel}
+        </button>
+        <input
+          type="text"
+          name={props.name}
+          id={props.id}
+          // value={value}
+          value={value}
+          className="form-control"
+          onChange={handleValueChange}
+          ref={inputRef}
+        />
+      </div>
+      {/* </FormElementWrapper>  */}
       <div
         className="modal fade"
         id={"local-file-picker-modal-" + props.name}
@@ -308,7 +309,7 @@ function Picker(props) {
           <div className="modal-content">
             <div className="modal-header">
               <h5 className="modal-title" id="exampleModalLabel">
-                {props.label} 
+                {props.label}
               </h5>
               <button
                 type="button"
