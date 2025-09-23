@@ -276,6 +276,18 @@ function Picker(props) {
           ref={remoteInput}
           onChange={(e) => handleFileChange(e.target.files)}
         />
+
+        <input
+          type="text"
+          name={props.name}
+          id={props.id}
+          // value={value}
+          value={value}
+          className="form-control"
+          onChange={handleValueChange}
+          ref={inputRef}
+          disabled={props.disableChange}
+        />
         <button
           type="button"
           className="btn btn-primary maroon-button"
@@ -290,17 +302,7 @@ function Picker(props) {
         >
           {props.localLabel}
         </button>
-        <input
-          type="text"
-          name={props.name}
-          id={props.id}
-          // value={value}
-          value={value}
-          className="form-control"
-          onChange={handleValueChange}
-          ref={inputRef}
-          disabled={props.disableChange}
-        />
+
       </div>
       {/* </FormElementWrapper>  */}
       <div

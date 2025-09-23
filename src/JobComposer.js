@@ -190,9 +190,7 @@ function JobComposer({
     <div className="job-composer-container" style={{ width: '100%', maxWidth: '100%', overflowX: 'hidden', height: '100%', maxHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       {error && <ErrorAlert error={error} onClose={() => setError(null)} />}
       <div className="card shadow" style={{ width: '100%', maxWidth: '100%', display: 'flex', flexDirection: 'column', height: '100%' }}>
-        <div className="card-header">
-          {/* <h6 className="maroon-header">Job Composer</h6> */}
-        </div>
+
         <div className="card-body" style={{ overflowY: 'auto', flex: '1 1 auto' }}>
           <form
             ref={formRef}
