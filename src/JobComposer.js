@@ -213,16 +213,16 @@ function JobComposer({
                   {/* <Text name="name" id="job-name" label="Job Name" onNameChange={props.sync_job_name} />
                   <Picker name="location" label="Location" localLabel="Change" defaultLocation={props.runLocation} /> */}
 
-                  <div className="form-group">
+                  {/* <div className="form-group">
                     <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap' }}>
 
-                      {/* {/* Job Name  */}
+                      {/* {/* Job Name  *
                       <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
                         <label htmlFor="job-name" style={{ whiteSpace: 'nowrap' }}>Job Name</label>
                         <Text name="name" id="job-name" useLabel={false} onNameChange={props.sync_job_name} />
                       </div>
 
-                      {/* {/* Location  */}
+                      {/* {/* Location  *
                       <div style={{ display: 'flex', flexGrow: 1, gap: '1.5rem' }}>
                         <div style={{ display: 'flex', alignItems: 'center' }}>
                           <label style={{ whiteSpace: 'nowrap' }}>Location</label>
@@ -238,7 +238,7 @@ function JobComposer({
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
 
 
                   <Select
@@ -259,7 +259,8 @@ function JobComposer({
                     ref={props.composerRef}
                     sync_job_name={props.sync_job_name}
                     runLocation={props.runLocation}
-                  // handleForm={props.handleForm} // if your elements use it on onChange
+                    setRunLocation={props.setRunLocation}
+                    customRunLocation={props.customRunLocation}
                   />
                 </div>
               </div>

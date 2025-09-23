@@ -64,9 +64,10 @@ export function App() {
       });
   }, []);
 
-  function sync_job_name(name) {
+  function sync_job_name(name, customRunLocation) {
+    const preferredLocation = customRunLocation || defaultRunLocation;
     setRunLocation(
-      defaultRunLocation + "/" + name
+      preferredLocation + "/" + name
     );
   }
 

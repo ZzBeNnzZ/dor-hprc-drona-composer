@@ -206,6 +206,8 @@ const Composer = forwardRef((props, ref) => {
         passThroughProps={{
           sync_job_name: props.sync_job_name,
           runLocation: props.runLocation,
+          setRunLocation: props.setRunLocation,
+          customRunLocation: props.customRunLocation,
           // environment: props.environment,
         }}
       />

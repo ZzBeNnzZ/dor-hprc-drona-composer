@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import FormElementWrapper from "../utils/FormElementWrapper";
 import Text from "../schemaElements/Text";
 import Picker from "../schemaElements/Picker";
@@ -11,18 +11,34 @@ export default function JobNameLocation({
     // schema-configurable
     showName = true,
     showLocation = true,
+    disableJobNameChange,
+    disableJobLocationChange,
     label = "Run destination",
     help,
     labelOnTop = true,
+    customJobName,
+    customJobLocation,
 
     // pass-through from Composer/FieldRenderer
     sync_job_name,          // e.g., props.sync_job_name
     runLocation,       // e.g., props.runLocation
+    setRunLocation,
     onChange,              // forwarded from FieldRenderer (handleValueChange wrapper)
     setError,              // optional; safe to accept/ignore
     ...rest                // future-proof
 }) {
     // derive unique ids to avoid collisions
+
+    useEffect(() => {
+        if (customJobLocation) {
+            setRunLocation?.(customJobLocation);
+            onChange?.("location", customJobLocation);
+        }
+        if (customJobName) {
+            sync_job_name?.(customJobName, customJobLocation);
+            onChange?.("name", customJobName);
+        }
+    }, []);
 
     return (
         <FormElementWrapper
@@ -37,13 +53,16 @@ export default function JobNameLocation({
                         <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
                             <label htmlFor="job-name" style={{ whiteSpace: 'nowrap' }}>Job Name</label>
                             <Text
-                                name={name}
+                                name={"name"}
                                 id={"job-name"}
                                 label=""
+                                value={customJobName || ""}
                                 useLabel={false}              // suppress inner label; we render our own
                                 onNameChange={sync_job_name}   // mirrors previous inline behavior
-                                onChange={onChange}           // keep renderer state/hooks consistent
+                                onChange={onChange}
                                 placeholder="Drona ID"
+                                disableChange={disableJobNameChange}
+
                             />
                         </div>
                     )}
@@ -62,6 +81,7 @@ export default function JobNameLocation({
                                     defaultLocation={runLocation}
                                     onChange={onChange}          // keep renderer state/hooks consistent
                                     style={{ width: "100%", alignItems: "flex-start" }}
+                                    disableChange={disableJobLocationChange}
                                 />
                             </div>
                         </div>
