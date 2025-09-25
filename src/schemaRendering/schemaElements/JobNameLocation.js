@@ -13,11 +13,11 @@ export default function JobNameLocation({
     showLocation = true,
     disableJobNameChange,
     disableJobLocationChange,
-    label = "Run destination",
     help,
     labelOnTop = true,
     customJobName,
     customJobLocation,
+    label,
 
     // pass-through from Composer/FieldRenderer
     sync_job_name,          // e.g., props.sync_job_name

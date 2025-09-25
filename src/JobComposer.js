@@ -162,6 +162,7 @@ function JobComposer({
     //   return;
     // }
 
+
     if (isSplitScreenMinimized) {
       setIsSplitScreenMinimized(false);
       setShowSplitScreenModal(true);
