@@ -157,8 +157,9 @@ def preview_job_route():
     # 5) Decide location
     # Rule: if user picked location => honor it; otherwise append name (if provided) or drona_job_id
     location_effective = location_in
+    mode = (params.get("mode") or "").strip()
 
-    if not user_picked_location:
+    if not user_picked_location and mode in ("create", ""):
         # If deprecated reset, location might end with old_id from older previews then strip the old id away
         if is_deprecated and old_id:
             location_effective = strip_trailing_component(location_effective, old_id)

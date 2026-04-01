@@ -4,14 +4,13 @@ import json
 import jsonref
 import subprocess
 import traceback
+import pathlib
 from .error_handler import APIError, handle_api_error
 from copy import deepcopy
 from .utils import get_envs_dir, get_runtime_dir
 
-CONTAINER_TYPES = {
-    "rowContainer", "container", "collapsibleRowContainer",
-    "collapsibleColContainer", "dragDropContainer", "jobNameLocation"
-}
+_config_path = pathlib.Path(__file__).parent.parent / "config" / "container_types.json"
+CONTAINER_TYPES = set(json.loads(_config_path.read_text()))
 
 def iterate_schema(schema_dict):
     """Generator that yields all elements in the schema including nested ones"""
@@ -196,9 +195,9 @@ def get_schema_route(environment):
             #    retriever_path = os.path.join(env_dir, environment, retriever_path)
 
         # Most likely unnecessary, please check
-        if element["type"] == "dynamicSelect":
-            element["isEvaluated"] = False
-            element["isShown"] = False
+        # if element["type"] == "dynamicSelect":
+        #     element["isEvaluated"] = False
+        #     element["isShown"] = False
 
     return jsonref.dumps(schema_dict)
 

@@ -82,5 +82,8 @@ export const componentsMap = {
 
 };
 
-export const Containers = ["rowContainer", "container", "collapsibleRowContainer", "collapsibleColContainer", "dragDropContainer", "jobNameLocation"];
+//Add or changes the container from the container_types.json so both the front end 
+// and back end can use the same source of truth
+import containerTypes from "../../../config/container_types.json";
+export const Containers = containerTypes;
 
