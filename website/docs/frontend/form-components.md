@@ -566,6 +566,7 @@ A radio button group component that allows users to select a single option from 
 - `label` (string, optional) - Display label for the field
 - `options - Array of option objects, each with value and label properties` (Array) - 
 - `value` (string, optional) - Default/initial selected value
+- `style` (string, optional) - Render variant; set to `"button"` for button-style radio options instead of the default form-check style
 - `help` (string, optional) - Help text displayed below the input
 
 ### Example
@@ -575,6 +576,7 @@ A radio button group component that allows users to select a single option from 
 "type": "radioGroup",
 "name": "priority",
 "label": "RadioGroup",
+"style": "button",
 "options": [
 { "value": "low", "label": "Low" },
 { "value": "medium", "label": "Medium" },
